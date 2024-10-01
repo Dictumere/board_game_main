@@ -4,8 +4,8 @@ import random
 import os
 
 
-fake = Faker("ru_RU")
-skills = [
+FAKE = Faker("ru_RU")
+SKILLS = [
     "Стремительный прыжок",
     "Электрический выстрел",
     "Ледяной удар",
@@ -15,7 +15,7 @@ skills = [
     "Ледяной выстрел",
     "Огненный заряд",
 ]
-letters = {
+LETTERS = {
     'а': 'а͠',
     'б': 'б̋',
     'в': 'в͒͠',
@@ -87,19 +87,19 @@ letters = {
 
 
 def create_character(number):
-    rand_skills = random.sample(skills, k=3)
+    rand_skills = random.sample(SKILLS, k=3)
     runic_skill = []
 
     for skill in rand_skills:
-        for key, value in letters.items():
+        for key, value in LETTERS.items():
             skill = skill.replace(key, value)
         runic_skill.append(skill)
 
     name = {
-        "first_name": fake.first_name(),
-        "last_name": fake.last_name(),
-        "job": fake.job(),
-        "town": fake.city(),
+        "first_name": FAKE.first_name(),
+        "last_name": FAKE.last_name(),
+        "job": FAKE.job(),
+        "town": FAKE.city(),
 
         "strength": random.randint(3, 18),
         "agility": random.randint(3, 18),
